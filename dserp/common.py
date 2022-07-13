@@ -45,14 +45,14 @@ class COMMON:
         return df
 
     @staticmethod
-    def df_to_mysql(dataFrame, engine, tableName):
+    def df_to_mysql(dataFrame, url, tableName):
         from sqlalchemy import create_engine
         import pymysql
         import pandas as pd
-        # engine = 'mysql+pymysql://root:@127.0.0.1/test'
+        # url = 'mysql+pymysql://root:@127.0.0.1/test'
         # tableName   = "UserVitals"
         # dataFrame   = pd.DataFrame(data=userVitals)
-        sqlEngine = create_engine(engine, pool_recycle=3600)
+        sqlEngine = create_engine(url, pool_recycle=3600)
         dbConnection = sqlEngine.connect()
         try:
             frame = dataFrame.to_sql(tableName, dbConnection, if_exists='replace')
