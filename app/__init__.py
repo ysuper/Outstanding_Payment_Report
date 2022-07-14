@@ -8,6 +8,7 @@ app.config.from_pyfile('../app_config.py')
 bootstrap = Bootstrap(app)
 db = SQLAlchemy(app)
 
+from app.api import *
 from app.models import *
 from app.views import *
 
