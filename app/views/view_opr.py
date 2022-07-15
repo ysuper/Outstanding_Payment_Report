@@ -19,3 +19,4 @@ class View_OPR(ModelView):
     column_searchable_list = columns
     column_sortable_list = columns
     column_filters = columns
+    column_formatters = {'憑證號碼': list_sales_order}

@@ -1,4 +1,5 @@
 from app import db
+from flask import Markup, url_for
 
 
 class Model_OPR(db.Model):
@@ -16,6 +17,14 @@ class Model_OPR(db.Model):
     原幣未收帳款 = db.Column(db.String(80))
     匯率 = db.Column(db.String(80))
     憑證號碼 = db.Column(db.String(80))
+
+
+def list_sales_order(view, context, model, name):
+    if model.憑證號碼:
+        return Markup('<a href="{}" target="_blank">{}</a>'.format(url_for('open_sales_order', form_no=model.憑證號碼),
+                                                                   model.憑證號碼))
+    else:
+        return ''
 
 
 # db.create_all()

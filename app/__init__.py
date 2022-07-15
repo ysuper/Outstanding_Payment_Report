@@ -1,13 +1,15 @@
 from flask_admin import Admin
-from flask import Flask
+from flask import Flask, redirect
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
+import os
 
 app = Flask(__name__)
 app.config.from_pyfile('../app_config.py')
 bootstrap = Bootstrap(app)
 db = SQLAlchemy(app)
 
+from app.route import *
 from app.api import *
 from app.models import *
 from app.views import *

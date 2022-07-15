@@ -1,0 +1,44 @@
+<html>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+  <script type="text/javascript" charset="utf8"
+    src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+</head>
+
+<body>
+  <!-- <table id="Sales_Order_Table" class="table table-striped table-bordered" cellspacing="0" width="100%"></table> -->
+  <center>
+    <h3>銷貨單身表</h3>
+  </center>
+  <table id="Sales_Order_Table" class="display" style="width:100%"></table>
+  <script>
+    var urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('TH001') && urlParams.has('TH002')) {
+      $.ajax({
+        url: "/erp/get/COPTH/" + urlParams.get('TH001') + '/' + urlParams.get('TH002'),
+        type: 'get',
+        dataType: 'json',
+        async: false,
+        success: function (data) {
+          $('#Sales_Order_Table').DataTable({
+            "data": data,
+            "columns": [
+              { data: 'TH002', title: "單號" },
+              { data: 'TH003', title: "序號" },
+              { data: 'TH004', title: "品號" },
+              { data: 'TH005', title: "品名" },
+              { data: 'TH007', title: "庫別" },
+              { data: 'TH008', title: "數量", render: $.fn.dataTable.render.number(',', '.', 0) },
+              { data: 'TH012', title: "單價", render: $.fn.dataTable.render.number(',', '.', 0) },
+              { data: 'TH013', title: "金額", render: $.fn.dataTable.render.number(',', '.', 0) },
+            ]
+          })
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>
