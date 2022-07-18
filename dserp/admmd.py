@@ -13,6 +13,8 @@ class ADMMD(SqlSrv):
     def __init__(self, sql_db_cfg, table_name):
         super().__init__(sql_db_cfg)
         cache_path = 'dserp/cache'
+        if not os.path.exists(cache_path):
+            os.mkdir(cache_path)
         self.table_name = table_name
         self.cache_file = "{}/{}.json".format(cache_path, self.table_name)
         self.get_df()
