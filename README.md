@@ -19,3 +19,12 @@ opr_cfg = dict(
     opr_db="mysql_db_name",
     opr_charset="utf8",
 )
+
+mysql_url = "mysql+pymysql://{}:{}@{}:{}/{}?charset={}".format(
+    opr_cfg["opr_user"],
+    opr_cfg["opr_password"],
+    opr_cfg["opr_host"],
+    opr_cfg["opr_port"],
+    opr_cfg["opr_db"],
+    opr_cfg["opr_charset"],
+)
