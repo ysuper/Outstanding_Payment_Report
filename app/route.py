@@ -2,6 +2,11 @@ from app import app
 from flask import redirect
 
 
+@app.route('/')
+def index():
+    return redirect('/admin/model_opr/')
+
+
 @app.route('/static/sales_order/<path:form_no>')
 def open_sales_order(form_no):
     form_type = form_no.split('-')[0]
