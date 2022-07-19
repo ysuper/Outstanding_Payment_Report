@@ -2,6 +2,7 @@ Outstanding_Payment_Report
 
 config.py
 =========
+```python
 from urllib.parse import quote_plus
 
 db_cfg = dict(
@@ -28,3 +29,4 @@ mysql_url = "mysql+pymysql://{}:{}@{}:{}/{}?charset={}".format(
     opr_cfg["opr_db"],
     opr_cfg["opr_charset"],
 )
+```
