@@ -62,7 +62,7 @@ class DannyReport:
         """
         output_df = pd.DataFrame()
 
-        for k, v in change_columns:
+        for k, v in change_columns['acrta']:
             output_df[k] = df[v]
         ### 新增自訂欄位、過濾重覆資料 ###
         output_df.insert(3, "結帳單號", df["結帳單別"].str.cat(df["結帳單號"], sep="-"))
